@@ -1,0 +1,22 @@
+{
+  "name": "metatron",
+  "displayName": "Metatron",
+  "version": "1.0.1",
+  "description": "Metatron, the operating system for digital assets, inside Claude: launch and grow a token, tokenize a real asset, put a company's or a wallet's crypto to work, take payments, buy crypto and learn, each step as a live card. Routes every request to the right rail through the Metatron connector.",
+  "author": {
+    "name": "Metatron",
+    "url": "https://launch.metatron.systems"
+  },
+  "homepage": "https://launch.metatron.systems",
+  "repository": "https://github.com/Metatron-S2create/metatron-cards",
+  "keywords": [
+    "metatron",
+    "tokenization",
+    "rwa",
+    "token launch",
+    "treasury",
+    "crypto payments",
+    "stablecoins",
+    "web3"
+  ]
+}

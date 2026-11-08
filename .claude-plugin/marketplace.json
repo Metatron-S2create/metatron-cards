@@ -1,0 +1,17 @@
+{
+  "name": "metatron",
+  "description": "The Metatron plugin for Claude: every Metatron rail as live cards, through one connector.",
+  "owner": {
+    "name": "Metatron",
+    "url": "https://launch.metatron.systems"
+  },
+  "plugins": [
+    {
+      "name": "metatron",
+      "source": "./plugins/metatron",
+      "description": "Launch and grow a token, tokenize a real asset, put a company's or a wallet's crypto to work, take payments, buy crypto and learn, each step as a live card.",
+      "version": "1.0.1",
+      "category": "finance"
+    }
+  ]
+}

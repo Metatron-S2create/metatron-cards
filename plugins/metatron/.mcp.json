@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "metatron": {
+      "type": "http",
+      "url": "https://launch.metatron.systems/mcp"
+    }
+  }
+}
