@@ -1,6 +1,6 @@
 # Metatron chat cards
 
-One renderer for the Metatron cards in Claude chats. The skills (metatron-launch-visual, metatron-rwa-visual) send data only, so a card renders in seconds and looks the same in every session, in light and dark mode.
+One renderer for the Metatron cards in Claude chats. The skills (metatron-launch-visual, metatron-rwa-visual, metatron-treasury-private-visual, metatron-treasury-public-visual, metatron-treasury-wallet-visual) send data only, so a card renders in seconds and looks the same in every session, in light and dark mode.
 
 ```html
 <h2 class="sr-only">Launch editor for Harbor Guild</h2>
@@ -9,7 +9,7 @@ One renderer for the Metatron cards in Claude chats. The skills (metatron-launch
 <script>window.MetatronCards?MetatronCards.render('launch.editor',{"name":"Harbor Guild","supply":1000000000,"kept":35}):document.getElementById('mt').textContent='The card could not load.'</script>
 ```
 
-Cards: rwa.start, rwa.structure, rwa.asset, rwa.seat, rwa.details, rwa.documents, rwa.year, rwa.ready, launch.path, launch.editor, launch.token, launch.checkout, launch.status, launch.sign, launch.utila, launch.live, launch.market, launch.needs.
+Cards: rwa.start, rwa.structure, rwa.asset, rwa.seat, rwa.details, rwa.documents, rwa.year, rwa.ready, launch.path, launch.editor, launch.token, launch.checkout, launch.status, launch.sign, launch.utila, launch.live, launch.market, launch.needs, treasury.start, treasury.options, treasury.plan, treasury.preview, treasury.approve, treasury.home, treasury.statement, treasury.golive, treasury.governance, treasury.connect, wallet.connect, wallet.home, wallet.earn, wallet.borrow, wallet.deals, wallet.sign, wallet.status, wallet.alerts.
 
 - `lang: "he"` draws every fixed label in Hebrew, right to left. `t: {...}` overrides any label.
 - Buttons that need the assistant call `sendPrompt` with a plain English sentence the skill maps to one tool.
