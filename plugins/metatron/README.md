@@ -2,7 +2,7 @@
 
 Metatron is the operating system for digital assets, inside the AI you already use. This plugin gives Claude the Metatron connector and one skill per rail, so you say what you want in plain words, in English or Hebrew, and every step arrives as a live card you tap.
 
-Version 1.0.1, the first release for design partners.
+Version 1.0.2, the first release for design partners.
 
 ## Install
 

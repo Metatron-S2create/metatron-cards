@@ -25,7 +25,7 @@ Rules that keep it fast:
 ```html
 <h2 class="sr-only">{one sentence that sums up the card}</h2>
 <div id="mt"></div>
-<script src="https://cdn.jsdelivr.net/gh/Metatron-S2create/metatron-cards@d39a5a7e819d2dc97f1ffde59e6c0422fb78a158/cards.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Metatron-S2create/metatron-cards@085390ae872a289076199d3e6b5a0a16c3e33445/cards.min.js"></script>
 <script>window.MetatronCards?MetatronCards.render('{CARD}',{DATA}):document.getElementById('mt').textContent='The card could not load. Say: show it as text.'</script>
 ```
 
