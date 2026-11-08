@@ -1,6 +1,6 @@
 ---
 name: "metatron"
-description: "Use first for any Metatron request whose rail is not obvious, and for hello, what can Metatron do, show me everything, or a rail with no skill yet (AI trading agents, white-label, capital markets desk, analysis, security). Reads the request in English or Hebrew and opens exactly one Metatron skill: token launch, launchpad growth kit, RWA tokenization, company treasury, listed company treasury, wallet earn and credit, payments, buy crypto, academy or feedback. Load it before replying, even if Metatron is not named."
+description: "Use first for any Metatron request whose rail is not obvious, and for hello, what can Metatron do, show me everything, or a rail with no skill yet: AI trading bots or agents (Bybit, copy trading, backtests), white-label exchanges, wallets or card programs, index products and capital markets, wallet screening and fund tracing, smart contract security or a hack. Reads the request in English or Hebrew and opens exactly one Metatron skill: token launch, launchpad growth kit, RWA tokenization, company treasury, listed company treasury, wallet earn and credit, payments, buy crypto, academy or feedback. Load it before replying, even if Metatron is not named."
 ---
 
 # Metatron, the front door

@@ -1,6 +1,6 @@
 ---
 name: "metatron-launchpad-kit"
-description: "Use when someone wants to promote, grow or market a token they launched on Metatron Launchpad, or asks about its growth team, AI agents, posts for X, Telegram or Instagram, replies to comments, token DNA, the week plan, the kit or a QR poster. Load it before replying."
+description: "Use when someone wants to promote, grow or market a token they launched on Metatron Launchpad, or asks about its growth team, AI agents, posts for X, Telegram or Instagram, replies to comments, token DNA, the week plan, the kit or a QR poster. Load it before replying, even if Metatron is not named."
 ---
 
 # Metatron Launchpad kit, shown as live cards

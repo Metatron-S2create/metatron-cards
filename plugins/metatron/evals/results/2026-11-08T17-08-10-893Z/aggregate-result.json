@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "claudeVersion": "2.1.319",
+  "startedAt": "2026-11-08T17:08:10.893Z",
+  "durationSeconds": 10,
+  "costUsd": 0.12682090000000001,
+  "partial": false,
+  "suite": {
+    "root": "/home/claude/metatron-cards/plugins/metatron",
+    "ablation": "none",
+    "caseFilter": "academy-course",
+    "threshold": 1,
+    "concurrency": 3,
+    "plugins": [
+      {
+        "name": "metatron",
+        "version": "1.0.1",
+        "path": "/home/claude/metatron-cards/plugins/metatron"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "academy-course",
+      "dir": "evals/academy-course",
+      "source": "prose",
+      "promptMarkdown": "Which course should I take to understand tokenization?",
+      "runsPerCase": 1,
+      "timeoutSeconds": 240,
+      "maxTurns": 8,
+      "graders": [
+        {
+          "name": "not-rwa-visual",
+          "type": "tool_used",
+          "weight": 1,
+          "config": {
+            "tool": "Skill",
+            "input_match": "\"skill\"\\s*:\\s*\"(?:[\\w-]+:)?metatron-rwa-visual\"",
+            "min": 0,
+            "max": 0
+          }
+        },
+        {
+          "name": "skill-fired",
+          "type": "tool_used",
+          "weight": 1,
+          "config": {
+            "tool": "Skill",
+            "input_match": "\"skill\"\\s*:\\s*\"(?:[\\w-]+:)?metatron-academy-visual\""
+          }
+        }
+      ],
+      "arms": {
+        "with": [
+          {
+            "score": 0.5,
+            "passed": false,
+            "turns": 1,
+            "costUsd": 0.0424203,
+            "judgeCostUsd": 0,
+            "durationSeconds": 9,
+            "startedAt": "2026-11-08T17:08:10.943Z",
+            "error": null,
+            "tracePath": "/tmp/claude-eval-cRN8mz/out/trace.jsonl",
+            "skippedPaidGraders": false,
+            "graders": [
+              {
+                "name": "not-rwa-visual",
+                "passed": true,
+                "weight": 1,
+                "explanation": "Skill called 0x (expected 0..0)",
+                "withOnly": false,
+                "scored": true
+              },
+              {
+                "name": "skill-fired",
+                "passed": false,
+                "weight": 1,
+                "explanation": "Skill called 0x (expected 1..∞)",
+                "withOnly": false,
+                "scored": true
+              }
+            ]
+          },
+          {
+            "score": 0.5,
+            "passed": false,
+            "turns": 1,
+            "costUsd": 0.0429903,
+            "judgeCostUsd": 0,
+            "durationSeconds": 10,
+            "startedAt": "2026-11-08T17:08:10.943Z",
+            "error": null,
+            "tracePath": "/tmp/claude-eval-tsDUpt/out/trace.jsonl",
+            "skippedPaidGraders": false,
+            "graders": [
+              {
+                "name": "not-rwa-visual",
+                "passed": true,
+                "weight": 1,
+                "explanation": "Skill called 0x (expected 0..0)",
+                "withOnly": false,
+                "scored": true
+              },
+              {
+                "name": "skill-fired",
+                "passed": false,
+                "weight": 1,
+                "explanation": "Skill called 0x (expected 1..∞)",
+                "withOnly": false,
+                "scored": true
+              }
+            ]
+          },
+          {
+            "score": 0.5,
+            "passed": false,
+            "turns": 1,
+            "costUsd": 0.0414103,
+            "judgeCostUsd": 0,
+            "durationSeconds": 9,
+            "startedAt": "2026-11-08T17:08:10.943Z",
+            "error": null,
+            "tracePath": "/tmp/claude-eval-1rgYmz/out/trace.jsonl",
+            "skippedPaidGraders": false,
+            "graders": [
+              {
+                "name": "not-rwa-visual",
+                "passed": true,
+                "weight": 1,
+                "explanation": "Skill called 0x (expected 0..0)",
+                "withOnly": false,
+                "scored": true
+              },
+              {
+                "name": "skill-fired",
+                "passed": false,
+                "weight": 1,
+                "explanation": "Skill called 0x (expected 1..∞)",
+                "withOnly": false,
+                "scored": true
+              }
+            ]
+          }
+        ]
+      },
+      "aggregates": {
+        "score": 0.5,
+        "passRate": 0
+      }
+    }
+  ],
+  "aggregates": {
+    "casesTotal": 1,
+    "casesPassed": 0,
+    "overallScore": 0.5,
+    "overallPassRate": 0
+  }
+}

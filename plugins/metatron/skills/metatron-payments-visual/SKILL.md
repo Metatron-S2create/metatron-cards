@@ -1,6 +1,6 @@
 ---
 name: "metatron-payments-visual"
-description: "Use whenever someone wants to take a payment, send a payment link or invoice, check whether a customer paid, refund or cancel, see payment totals, connect payments to their store, site, app or Shopify, go live with payments, or a pay_ tool is used."
+description: "Use whenever someone wants to take a payment, send a payment link or invoice, check whether a customer paid, refund or cancel, see payment totals, connect payments to their store, site, app or Shopify, go live with payments, or a pay_ tool is used. Load it before replying, even if Metatron is not named."
 ---
 
 # Metatron Pay, shown as live cards
