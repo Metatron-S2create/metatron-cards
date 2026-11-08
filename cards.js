@@ -1,6 +1,6 @@
 /* Metatron chat cards. One renderer for the Metatron skills in Claude: the assistant passes data, this draws the card. */
 (function () {
-  var VERSION = '1.6.0';
+  var VERSION = '1.6.1';
   var CSS = [
     '.bl{--f:Inter,var(--font-sans,system-ui),sans-serif;font-family:var(--f);letter-spacing:-.01em;display:grid;gap:12px;padding:4px 0;color:var(--text-primary)}',
     '.bl *{box-sizing:border-box}',
@@ -1879,7 +1879,7 @@
       return '<button class="os-tile bl-in" style="--i:' + i + '" data-say="' + e(t[5]) + '"><span class="os-ic" aria-hidden="true"><i class="ti ' + t[2] + '"></i></span><span style="min-width:0"><span class="os-t">' + e(L('os_' + t[0], t[3])) + (st ? ' <span class="bl-tag ' + osTone(rawStatus(t)) + '">' + e(st) + '</span>' : '') + '</span><span class="os-s" style="display:block">' + e(L('os_' + t[0] + '_s', t[4])) + '</span></span></button>';
     }).join('') + '</div>'
       + (soon.length ? '<div class="bl-card bl-night" style="display:grid;gap:10px;padding:14px 16px"><div class="bl-muted" style="font-size:12px;letter-spacing:.06em;text-transform:uppercase">' + e(L('osMore', 'More rails')) + '</div><div class="os-row">' + soon.map(function (r) { return '<button class="os-soon" data-say="' + e('Tell me about the ' + r.name + ' rail.') + '">' + e(r.name) + ' <span class="bl-tag ' + osTone(r.status) + '">' + e(L('osst_' + String(r.status).replace(/\s+/g, '_'), r.status)) + '</span></button>'; }).join('') + '</div></div>' : '')
-      + '<div style="display:flex;gap:8px;flex-wrap:wrap">' + sayB('I want to send feedback to Metatron.', L('osFeedback', 'Send feedback'), 'so sm') + '</div>';
+      + '<div style="display:flex;gap:8px;flex-wrap:wrap">' + sayB('I want to send feedback to Metatron.', L('osFeedback', 'Send feedback'), 'o sm') + '</div>';
     $('os-f').onsubmit = function (ev) {
       ev.preventDefault();
       var q = $('os-q').value.trim();
