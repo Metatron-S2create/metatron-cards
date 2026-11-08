@@ -5,7 +5,7 @@ One renderer for the Metatron cards in Claude chats. The skills of the Metatron 
 ```html
 <h2 class="sr-only">Launch editor for Harbor Guild</h2>
 <div id="mt"></div>
-<script src="https://cdn.jsdelivr.net/gh/Metatron-S2create/metatron-cards@f6200f657a60ccd833e74f35a131a5a0060eac70/cards.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Metatron-S2create/metatron-cards@085390ae872a289076199d3e6b5a0a16c3e33445/cards.min.js"></script>
 <script>window.MetatronCards?MetatronCards.render('launch.editor',{"name":"Harbor Guild","supply":1000000000,"kept":35}):document.getElementById('mt').textContent='The card could not load.'</script>
 ```
 
