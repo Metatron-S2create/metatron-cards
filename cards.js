@@ -1,6 +1,6 @@
 /* Metatron chat cards. One renderer for the Metatron skills in Claude: the assistant passes data, this draws the card. */
 (function () {
-  var VERSION = '1.5.0';
+  var VERSION = '1.6.0';
   var CSS = [
     '.bl{--f:Inter,var(--font-sans,system-ui),sans-serif;font-family:var(--f);letter-spacing:-.01em;display:grid;gap:12px;padding:4px 0;color:var(--text-primary)}',
     '.bl *{box-sizing:border-box}',
@@ -1798,6 +1798,152 @@
     S.B.innerHTML = '<div class="bl-cols" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">' + A.map(function (a, i) { var s = ST[a.state] || ST.waiting; return '<div class="bl-card ' + (i === 0 ? 'bl-white' : 'bl-night') + ' kt-agent bl-in" style="--i:' + i + '"><div style="display:flex;gap:8px;align-items:center"><span class="bl-ico"><i class="ti ti-' + (IC[a.key] || 'robot') + '" aria-hidden="true"></i></span><span class="bd" style="font:600 15px var(--f)">' + e(a.name) + '</span><span class="kt-state">' + K.tag(s[0], s[1]) + '</span></div><div class="bl-muted bd" style="font-size:12px">' + e(a.role) + '</div><div class="bd" style="font-size:14px;line-height:1.45">' + e(a.headline) + '</div>' + (a.next || a.key === 'growth' ? '<div>' + sayB(NEXT[a.key] || NEXT.growth, a.next || L('ktOpenDesk', 'Open the desk'), i === 0 ? 'a sm' : 'no') + '</div>' : '') + '</div>'; }).join('') + '</div>'
       + (D.listing && D.listing.application_pack ? '<div><button class="bl-pill o sm" id="kt-ap">' + e(L('ktCopyAnswers', 'Copy the exchange answers')) + '</button></div>' : '');
     if (K.$('kt-ap')) K.$('kt-ap').onclick = function () { copyText(D.listing.application_pack, K.$('kt-ap'), function (k, v) { return k === 'pyCopied' ? L('ktCopied', 'Copied') : v; }); };
+    K.done();
+  };
+
+  /* ---------- Metatron home and feedback (the plugin's front door) ---------- */
+
+  CSS += '\n' + [
+    '.os-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}',
+    '.os-tile{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:#fff;color:#0B2840;border:1px solid #DCE7F7;transition:border-color .15s,transform .15s;min-width:0}',
+    '.os-tile:hover{border-color:#3A92FC;transform:translateY(-1px)}.os-tile:focus-visible{outline:3px solid #8EC5FB;outline-offset:1px}',
+    '.os-ic{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:19px;background:#EEF5FF;color:#1F6FE5}',
+    '.os-t{font:600 15px/1.25 var(--f);display:flex;gap:6px;align-items:center;flex-wrap:wrap}.os-s{font-size:13px;line-height:1.4;color:#4A6488;margin-top:3px}',
+    '.os-ask{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.os-ask .bl-in-f{flex:1;min-width:200px}',
+    '.os-soon{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;gap:8px;align-items:center;border:1px solid #2A3E63;border-radius:999px;padding:6px 8px 6px 12px;font:500 13px var(--f);color:#EEF4FF}',
+    '.os-soon:hover{border-color:#8EC5FB}.os-soon:focus-visible{outline:3px solid #8EC5FB}',
+    '.os-ta{display:block;width:100%!important;min-height:104px;padding:10px 12px!important;border:1px solid #DCE7F7!important;border-radius:12px!important;background:#fff!important;color:#0B2840!important;font:400 14px/1.5 var(--f)!important;resize:vertical}',
+    '.os-ta:focus{border-color:#3A92FC!important;outline:2px solid #BFDBFE}.os-ta::placeholder{color:#7A8BA6!important;opacity:1}',
+    '.os-q{font:600 14px var(--f);margin:0 0 8px}.os-row{display:flex;gap:6px;flex-wrap:wrap}',
+    '.os-rate{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.os-rate .bl-chip{min-width:40px;justify-content:center!important}',
+    '.os-check{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.4;cursor:pointer}',
+    '.os-done{display:flex;gap:12px;align-items:center}.os-done i{font-size:26px;color:#2BB673}'
+  ].join('\n');
+
+  Object.assign(HE, {
+    osKick: 'Metatron', osTitle: 'מה תרצה לעשות?', osSub: 'אמור את זה במילים שלך, או בחר מסלול. כל אחד נפתח כאן, בתוך הצ\'אט.',
+    osPh: 'למשל: קנה ביטקוין ב-200 דולר', osGo: 'קדימה', osMore: 'מסלולים נוספים', osFeedback: 'שלח משוב', osAll: 'כל המסלולים',
+    os_launch: 'השקת טוקן', os_launch_s: 'עיצוב, חלוקה והשקה על Base, Ethereum או Polygon',
+    os_kit: 'קידום טוקן', os_kit_s: 'צוות הצמיחה מכין את השבוע; אתה מאשר ומפרסם',
+    os_rwa: 'טוקניזציה של נכס', os_rwa_s: 'נדל"ן, מתכות, אשראי פרטי, קרנות: המבנה שמתאים',
+    os_treasury: 'טרז\'רי של חברה', os_treasury_s: 'ביטקוין ודולרים של החברה שיושבים בצד, עובדים',
+    os_wallet: 'הארנק שלי', os_wallet_s: 'תשואה על USDC, ETH או BTC, או הלוואה בלי למכור',
+    os_pay: 'קבלת תשלומים', os_pay_s: 'לינקים לתשלום, חשבוניות, החזרים והחנות שלך',
+    os_buy: 'קניית קריפטו', os_buy_s: 'ביטקוין, ETH או USDC בכרטיס או ב-Apple Pay',
+    os_academy: 'ללמוד', os_academy_s: 'קורסים, RWA Fast Track ותשובות במילים פשוטות',
+    osPilot: 'פיילוט חי',
+    fbTitle: 'ספר לנו איך היה', fbSub: 'ההערה שלך עוברת ישר לצוות של Metatron. שום דבר אחר מהצ\'אט לא נשלח.',
+    fbAbout: 'על מה זה?', fbFeel: 'איך זה הרגיש?', fbKind: 'איזה סוג הערה?', fbWords: 'במילים שלך', fbPh: 'מה ניסית, מה עבד, מה נתקע, מה היית רוצה שיהיה',
+    fbContact: 'הצוות של Metatron יכול לכתוב לי על זה', fbSend: 'שלח ל-Metatron', fbPoor: 'חלש', fbGreat: 'מצוין',
+    fbErrAbout: 'בחר על מה ההערה', fbErrWords: 'כתוב כמה מילים',
+    fbSent: 'נשלח לצוות של Metatron', fbThanks: 'תודה. יש עוד משהו?', fbAnother: 'שלח הערה נוספת', fbHome: 'חזרה לכל מה ש-Metatron עושה',
+    fb_launch: 'השקת טוקן', fb_kit: 'קידום טוקן', fb_rwa: 'טוקניזציה של נכס', fb_treasury: 'טרז\'רי של חברה', fb_wallet: 'הארנק שלי', fb_pay: 'קבלת תשלומים',
+    fb_buy: 'קניית קריפטו', fb_academy: 'אקדמיה', fb_plugin: 'הפלאגין עצמו', fb_other: 'משהו אחר',
+    fbk_works: 'עובד טוב', fbk_broken: 'משהו נשבר', fbk_slow: 'איטי מדי', fbk_confusing: 'מבלבל', fbk_idea: 'רעיון',
+    osst_Live: 'חי', osst_Beta: 'בטא', osst_Sandbox: 'סביבת ניסוי', osst_Expert_desk: 'דסק מומחים', osst_In_build: 'בבנייה', osst_Planned: 'מתוכנן'
+  });
+
+  /* The tiles: [key, rail, icon, title, subtitle, the sentence it sends]. The sentence stays in English. */
+  var OS_TILES = [
+    ['launch', 'token-launch', 'ti-rocket', 'Launch a token', 'Design, split and launch on Base, Ethereum or Polygon', 'I want to launch a token.'],
+    ['kit', 'token-launch', 'ti-speakerphone', 'Promote my token', 'Your growth team drafts the week; you approve and post', 'Promote my token.'],
+    ['rwa', 'rwa', 'ti-building-skyscraper', 'Tokenize an asset', 'Real estate, metals, private credit, funds: the structure that fits', 'I want to tokenize an asset.'],
+    ['treasury', 'treasury', 'ti-building-bank', 'Company treasury', 'Put a company\'s idle Bitcoin and dollars to work', 'Put my company\'s idle Bitcoin to work.'],
+    ['wallet', 'treasury', 'ti-wallet', 'My wallet', 'Earn on USDC, ETH or BTC, or borrow without selling', 'What\'s the best yield for the USDC in my wallet?'],
+    ['pay', 'payments', 'ti-receipt', 'Get paid', 'Payment links, invoices, refunds and your store', 'I want to take a payment.'],
+    ['buy', 'buy', 'ti-currency-bitcoin', 'Buy crypto', 'Bitcoin, ETH or USDC with a card or Apple Pay', 'Buy Bitcoin with my card.'],
+    ['academy', 'academy', 'ti-school', 'Learn', 'Courses, RWA Fast Track and plain-words answers', 'Show me the Academy courses.']
+  ];
+  var osTone = function (s) { return s === 'Live' || s === 'Live pilot' ? 't-ok' : s === 'Beta' || s === 'Expert desk' ? 't-req' : 't-mid'; };
+
+  CARDS['os.home'] = function (D, root, K) {
+    var L = K.L, $ = K.$, R = Array.isArray(D.rails) ? D.rails : null;
+    var byId = {}; (R || []).forEach(function (r) { byId[r.id] = r; });
+    var tiles = OS_TILES.filter(function (t) { return !R || byId[t[1]]; });
+    var statusOf = function (t) {
+      if (!R) return '';
+      if (t[0] === 'wallet') return L('osPilot', 'Live pilot');
+      var s = byId[t[1]].status;
+      return L('osst_' + String(s).replace(/\s+/g, '_'), s);
+    };
+    var rawStatus = function (t) { return !R ? '' : t[0] === 'wallet' ? 'Live pilot' : byId[t[1]].status; };
+    var S = shell(K, root, {
+      rtl: K.rtl,
+      sr: 'Everything Metatron does: pick a rail or say what you want',
+      hero: '<div class="bl-muted" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase">' + e(L('osKick', 'Metatron')) + '</div><div style="font:700 28px/1.1 var(--f);letter-spacing:-.02em;margin-top:4px">' + e(L('osTitle', 'What do you want to do?')) + '</div><div style="font-size:14px;line-height:1.5;margin-top:6px;max-width:560px;color:#E6F0FE">' + e(L('osSub', 'Say it in your words, or tap a rail. Each one opens right here in the chat.')) + '</div>'
+    });
+    S.H.innerHTML = '<form class="os-ask" id="os-f"><input id="os-q" class="bl-in-f" maxlength="400" autocomplete="off" placeholder="' + e(L('osPh', 'For example: buy $200 of Bitcoin to my wallet')) + '" aria-label="' + e(L('osTitle', 'What do you want to do?')) + '"><button class="bl-pill w" type="submit">' + e(L('osGo', 'Go')) + ' ↗</button></form>' + errSpan('os-err');
+    var soon = (R || []).filter(function (r) { return !OS_TILES.some(function (t) { return t[1] === r.id; }); });
+    S.B.innerHTML = '<div class="os-grid">' + tiles.map(function (t, i) {
+      var st = statusOf(t);
+      return '<button class="os-tile bl-in" style="--i:' + i + '" data-say="' + e(t[5]) + '"><span class="os-ic" aria-hidden="true"><i class="ti ' + t[2] + '"></i></span><span style="min-width:0"><span class="os-t">' + e(L('os_' + t[0], t[3])) + (st ? ' <span class="bl-tag ' + osTone(rawStatus(t)) + '">' + e(st) + '</span>' : '') + '</span><span class="os-s" style="display:block">' + e(L('os_' + t[0] + '_s', t[4])) + '</span></span></button>';
+    }).join('') + '</div>'
+      + (soon.length ? '<div class="bl-card bl-night" style="display:grid;gap:10px;padding:14px 16px"><div class="bl-muted" style="font-size:12px;letter-spacing:.06em;text-transform:uppercase">' + e(L('osMore', 'More rails')) + '</div><div class="os-row">' + soon.map(function (r) { return '<button class="os-soon" data-say="' + e('Tell me about the ' + r.name + ' rail.') + '">' + e(r.name) + ' <span class="bl-tag ' + osTone(r.status) + '">' + e(L('osst_' + String(r.status).replace(/\s+/g, '_'), r.status)) + '</span></button>'; }).join('') + '</div></div>' : '')
+      + '<div style="display:flex;gap:8px;flex-wrap:wrap">' + sayB('I want to send feedback to Metatron.', L('osFeedback', 'Send feedback'), 'so sm') + '</div>';
+    $('os-f').onsubmit = function (ev) {
+      ev.preventDefault();
+      var q = $('os-q').value.trim();
+      if (q.length < 2) { $('os-err').textContent = L('fbErrWords', 'Write a few words'); return; }
+      say(q);
+    };
+    $('os-q').oninput = function () { $('os-err').textContent = ''; };
+    K.done();
+  };
+
+  /* Feedback: [key, label, rail, skill]. */
+  var FB_ABOUT = [
+    ['launch', 'Launch a token', 'token-launch', 'metatron-launch-visual'],
+    ['kit', 'Promote a token', 'token-launch', 'metatron-launchpad-kit'],
+    ['rwa', 'Tokenize an asset', 'rwa', 'metatron-rwa-visual'],
+    ['treasury', 'Company treasury', 'treasury', 'metatron-treasury-private-visual'],
+    ['wallet', 'My wallet', 'treasury', 'metatron-treasury-wallet-visual'],
+    ['pay', 'Get paid', 'payments', 'metatron-payments-visual'],
+    ['buy', 'Buy crypto', 'buy', 'metatron-buy-visual'],
+    ['academy', 'Academy', 'academy', 'metatron-academy-visual'],
+    ['plugin', 'The plugin itself', 'plugin', 'metatron'],
+    ['other', 'Something else', 'general', '']
+  ];
+  var FB_KIND = [['works', 'Works well'], ['broken', 'Something broke'], ['slow', 'Too slow'], ['confusing', 'Confusing'], ['idea', 'An idea']];
+
+  CARDS['os.feedback'] = function (D, root, K) {
+    var L = K.L, $ = K.$;
+    var S = shell(K, root, {
+      rtl: K.rtl,
+      sr: D.saved ? 'Feedback sent to the Metatron team' : 'Send feedback to the Metatron team',
+      hero: '<div class="bl-muted" style="font-size:12px;letter-spacing:.12em;text-transform:uppercase">' + e(L('osKick', 'Metatron')) + '</div><div style="font:700 26px/1.1 var(--f);letter-spacing:-.02em;margin-top:4px">' + e(D.saved ? L('fbSent', 'Sent to the Metatron team') : L('fbTitle', 'Tell us how it went')) + '</div><div style="font-size:14px;line-height:1.5;margin-top:6px;max-width:560px;color:#E6F0FE">' + e(D.saved ? L('fbThanks', 'Thank you. Anything else?') : L('fbSub', 'Your note goes straight to the Metatron team. Nothing else from this chat is sent.')) + '</div>'
+    });
+    if (D.saved) {
+      S.H.innerHTML = D.id ? '<div class="bl-mono" style="margin-top:10px;color:#DCEBFF">' + e(D.id) + '</div>' : '';
+      S.B.innerHTML = '<div class="bl-card bl-white"><div class="os-done"><i class="ti ti-circle-check" aria-hidden="true"></i><div style="display:flex;gap:8px;flex-wrap:wrap">' + sayB('I want to send more feedback to Metatron.', L('fbAnother', 'Send another note'), 'a') + sayB('Show me everything Metatron does.', L('fbHome', 'Back to everything Metatron does'), 'so') + '</div></div></div>';
+      K.done();
+      return;
+    }
+    var pre = FB_ABOUT.find(function (a) { return D.skill && a[3] === D.skill; }) || FB_ABOUT.find(function (a) { return D.rail && a[2] === D.rail; }) || null;
+    var about = pre ? pre[0] : '', skill = pre ? (D.skill || pre[3]) : '', rating = Number(D.rating) || 0, kind = D.kind || '';
+    var chip = function (attr, v, label, on) { return '<button class="bl-chip" data-' + attr + '="' + e(v) + '" aria-pressed="' + (on ? 'true' : 'false') + '">' + e(label) + '</button>'; };
+    S.B.innerHTML = (D.reason ? '<div class="tr-risk"><i class="ti ti-alert-triangle" aria-hidden="true"></i><span>' + e(D.reason) + '</span></div>' : '')
+      + '<div class="bl-card bl-white" style="display:grid;gap:18px">'
+      + '<div><div class="os-q">' + e(L('fbAbout', 'What is it about?')) + '</div><div class="os-row">' + FB_ABOUT.map(function (a) { return chip('ab', a[0], L('fb_' + a[0], a[1]), a[0] === about); }).join('') + '</div></div>'
+      + '<div><div class="os-q">' + e(L('fbFeel', 'How did it feel?')) + '</div><div class="os-rate"><span class="bl-muted" style="font-size:12px">' + e(L('fbPoor', 'Poor')) + '</span>' + [1, 2, 3, 4, 5].map(function (n) { return chip('rt', n, String(n), n === rating); }).join('') + '<span class="bl-muted" style="font-size:12px">' + e(L('fbGreat', 'Great')) + '</span></div></div>'
+      + '<div><div class="os-q">' + e(L('fbKind', 'What kind of note?')) + '</div><div class="os-row">' + FB_KIND.map(function (k) { return chip('kd', k[0], L('fbk_' + k[0], k[1]), k[0] === kind); }).join('') + '</div></div>'
+      + '<div><label class="os-q" for="fb-t" style="display:block">' + e(L('fbWords', 'In your words')) + '</label><textarea id="fb-t" class="os-ta" maxlength="2000" placeholder="' + e(L('fbPh', 'What you tried, what worked, where it got stuck, what you wish it did')) + '">' + e(D.message || '') + '</textarea></div>'
+      + '<label class="os-check"><input type="checkbox" id="fb-c" class="bl-cb"' + (D.contact_ok ? ' checked' : '') + '><span>' + e(L('fbContact', 'The Metatron team may write to me about this')) + '</span></label>'
+      + '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button class="bl-pill a" id="fb-go">' + e(L('fbSend', 'Send to Metatron')) + ' ↗</button>' + errSpan('fb-err') + '</div></div>';
+    var err = function (t) { $('fb-err').textContent = t; };
+    root.querySelectorAll('[data-ab]').forEach(function (b) { b.onclick = function () { about = b.dataset.ab; var a = FB_ABOUT.find(function (x) { return x[0] === about; }); skill = pre && pre[0] === about ? (D.skill || a[3]) : a[3]; selPick(root, '[data-ab]', b); err(''); }; });
+    root.querySelectorAll('[data-rt]').forEach(function (b) { b.onclick = function () { rating = +b.dataset.rt; selPick(root, '[data-rt]', b); }; });
+    root.querySelectorAll('[data-kd]').forEach(function (b) { b.onclick = function () { kind = b.dataset.kd; selPick(root, '[data-kd]', b); }; });
+    $('fb-t').oninput = function () { err(''); };
+    $('fb-go').onclick = function () {
+      var a = FB_ABOUT.find(function (x) { return x[0] === about; }), words = $('fb-t').value.trim().replace(/\s+/g, ' ');
+      if (!a) return err(L('fbErrAbout', 'Pick what the note is about'));
+      if (words.length < 3) return err(L('fbErrWords', 'Write a few words'));
+      var parts = ['About: ' + a[1] + ' (rail ' + a[2] + (skill ? ', skill ' + skill : '') + ')'];
+      if (kind) parts.push('Kind: ' + kind);
+      if (rating) parts.push('Rating: ' + rating + ' of 5');
+      parts.push('Contact me: ' + ($('fb-c').checked ? 'yes' : 'no'));
+      say('Send this feedback to Metatron. ' + parts.join('. ') + '. In my words: ' + words);
+    };
     K.done();
   };
 
