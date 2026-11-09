@@ -9,8 +9,8 @@
     {
       "name": "metatron",
       "source": "./plugins/metatron",
-      "description": "Launch and grow a token, tokenize a real asset, put a company's or a wallet's crypto to work, take payments, buy crypto and learn, each step as a live card.",
-      "version": "1.0.2",
+      "description": "Launch and grow a token, tokenize a real asset or a basket of them as an index token, put a company's or a wallet's crypto to work, take payments, buy crypto and learn, each step as a live card.",
+      "version": "1.1.0",
       "category": "finance"
     }
   ]

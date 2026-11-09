@@ -122,6 +122,27 @@ In Hebrew:
 - אני רוצה למכור חלקים בדירות להשכרה למשקיעים דרך טוקנים
 - יש לי בניין משרדים בתל אביב ואני רוצה לגייס משקיעים עם טוקנים
 
+## metatron-rwa-index-visual: One token for a basket of real assets
+
+- I want to create an index token of whisky casks
+- Build an index of 12 rental buildings that investors can hold as one token
+- One token for a basket of gold, silver and casks
+- Tokenize a basket of private credit notes, equal weights, rebalanced quarterly
+- Which NAV oracles can price my index?
+- Open the oracle marketplace for my basket
+- An index of gold and silver for my family office
+- Add the gold package to my index
+
+In Hebrew:
+
+- אני רוצה לייצר טוקן אינדקס של חביות וויסקי
+- מדד של נדל"ן מניב למשקיעים, טוקן אחד
+- סל של זהב, כסף וחביות ויסקי בטוקן אחד
+- אילו אורקלים יש לכם בשביל NAV של הפרויקט שלי?
+- אני רוצה טוקן שמייצג סל של נכסים
+
+Close calls: "Tokenize whisky casks" (one holding) is metatron-rwa-visual; "Teach me how index tokens work" is metatron-academy-visual; "Design a benchmark index for tokenized treasuries" is the capital markets desk (metatron).
+
 ## metatron-treasury-private-visual: Put a company's idle Bitcoin or dollars to work
 
 - My company holds 10 BTC and $2M in USDC sitting idle

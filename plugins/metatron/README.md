@@ -2,7 +2,7 @@
 
 Metatron is the operating system for digital assets, inside the AI you already use. This plugin gives Claude the Metatron connector and one skill per rail, so you say what you want in plain words, in English or Hebrew, and every step arrives as a live card you tap.
 
-Version 1.0.2, the first release for design partners.
+Version 1.1.0: the Index Token joins the RWA rail.
 
 ## Install
 
@@ -29,6 +29,7 @@ Say any of these, or just "What can Metatron do?":
 
 - Launch a token called Harbor on Ethereum, 70% to the DEX paired with USDC, keep 30% locked for 12 months
 - I want to tokenize a $5M office building in Tel Aviv for investors outside the US
+- I want to create an index token of whisky casks
 - My company holds 10 BTC and $2M in USDC sitting idle
 - What's the best yield for the USDC in my wallet?
 - Buy $200 of Bitcoin to my wallet
@@ -45,6 +46,7 @@ Say any of these, or just "What can Metatron do?":
 | metatron-launch-visual | Create, launch or mint a token: split, DEX pool, checkout, status |
 | metatron-launchpad-kit | Promote a token that is live: growth team, posts for X, Telegram and Instagram, token DNA, the week, a QR poster |
 | metatron-rwa-visual | Tokenize a real asset: real estate, metals, private credit, funds, casks |
+| metatron-rwa-index-visual | One token for a basket of real assets: design the index from your words, pick the oracle behind every value from the marketplace or a ready package, watch a first year, create it and record its values |
 | metatron-treasury-private-visual | Put a company's or startup's idle Bitcoin and dollars to work |
 | metatron-treasury-public-visual | The same for a listed company, ready for the board and the auditor |
 | metatron-treasury-wallet-visual | Earn on, or borrow against, the crypto in your own wallet |
@@ -58,6 +60,7 @@ Say any of these, or just "What can Metatron do?":
 - Token Launch: live end to end. The checkout is a demo paid with Metatron Credit; no card is charged.
 - Launchpad growth kit: live. Nothing is posted for you; you approve each post and post it yourself.
 - RWA Tokenization: Beta. Plan, structure, simulate and rehearse on a test network; no real issuance yet.
+- Index Token: Beta, part of the RWA rail. Design, simulate and rehearse; each NAV is signed by the calculation agent's own wallet in the app.
 - Company treasury: Sandbox, end to end with no real money.
 - Wallet Earn and Wallet Credit: live pilots with real money for invited wallets, signed in your own wallet.
 - Crypto Payments: live in test mode until your business is verified.

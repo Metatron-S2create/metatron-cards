@@ -1,11 +1,11 @@
 # Metatron chat cards
 
-One renderer for the Metatron cards in Claude chats. The skills of the Metatron plugin (metatron, metatron-feedback, metatron-launch-visual, metatron-rwa-visual, metatron-treasury-private-visual, metatron-treasury-public-visual, metatron-treasury-wallet-visual, metatron-buy-visual, metatron-payments-visual, metatron-academy-visual, metatron-launchpad-kit) send data only, so a card renders in seconds and looks the same in every session, in light and dark mode.
+One renderer for the Metatron cards in Claude chats. The skills of the Metatron plugin (metatron, metatron-feedback, metatron-launch-visual, metatron-rwa-visual, metatron-rwa-index-visual, metatron-treasury-private-visual, metatron-treasury-public-visual, metatron-treasury-wallet-visual, metatron-buy-visual, metatron-payments-visual, metatron-academy-visual, metatron-launchpad-kit) send data only, so a card renders in seconds and looks the same in every session, in light and dark mode.
 
 ```html
 <h2 class="sr-only">Launch editor for Harbor Guild</h2>
 <div id="mt"></div>
-<script src="https://cdn.jsdelivr.net/gh/Metatron-S2create/metatron-cards@085390ae872a289076199d3e6b5a0a16c3e33445/cards.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Metatron-S2create/metatron-cards@9a48a3241fee6662aea72a698b19d0781020740c/cards.min.js"></script>
 <script>window.MetatronCards?MetatronCards.render('launch.editor',{"name":"Harbor Guild","supply":1000000000,"kept":35}):document.getElementById('mt').textContent='The card could not load.'</script>
 ```
 
