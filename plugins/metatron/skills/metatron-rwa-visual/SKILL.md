@@ -5,7 +5,7 @@ description: "Use whenever someone wants to tokenize a real-world asset (propert
 
 # Metatron RWA, shown as live cards
 
-Every RWA step is a card in the look of rwa.metatron.systems. The customer sees the structure as a map, every seat of the team opens its closing steps, and they leave with a full RWA: structure, team, documents and sign-offs in place, ready for the wallet steps in the app. A shared renderer draws the cards; you only pass data. A token or coin with no asset behind it belongs to metatron-launch-visual.
+Every RWA step is a card in the look of rwa.metatron.systems. The customer sees the structure as a map, every seat of the team opens its closing steps, and they leave with a full RWA: structure, team, documents and sign-offs in place, ready for the wallet steps in the app. A shared renderer draws the cards; you only pass data. A token or coin with no asset behind it belongs to metatron-launch-visual; one token for a basket of assets (an index token, NAV oracles, the oracle marketplace) belongs to metatron-rwa-index-visual, which hands its seats back here.
 
 ## Fast by design: the first card in four steps
 
