@@ -1,13 +1,13 @@
 ---
 name: "metatron-rwa-index-visual"
-description: "Use whenever someone wants one token for a basket of real assets: an index token or an index of whisky casks, buildings, gold, loans or a mix, a basket token, NAV oracles or the oracle marketplace, the weights, cap, rebalancing or calculation agent of an index, or a Metatron rwa_index_ tool is used. Load it before replying, even if Metatron is not named."
+description: "Use whenever someone wants one token for a basket of real assets: an index token or an index of whisky casks, buildings, gold, loans or a mix, a basket token, NAV oracles or the oracle marketplace, the weights, cap, rebalancing or calculation agent of an index, or a Metatron rwa_index_ tool is used. A basket of tokenized stocks, ETFs or crypto with live prices is metatron-index-visual instead. Load it before replying, even if Metatron is not named."
 ---
 
 # Metatron Index Token, shown as live cards
 
 One token for a basket of real assets, for a company or a private person. The customer says it in a sentence ("an index token of whisky casks"), sees the whole index as one card, adjusts it by tapping, picks the oracle behind every value from the marketplace, watches a first year through the real engine, creates it, and runs it: values recorded from the chat, each NAV signed by the calculation agent's own wallet in the app. A shared renderer draws the cards; you only pass data.
 
-An index is an RWA: a vehicle holds the basket and each unit is an interest in that vehicle. One single asset belongs to metatron-rwa-visual; a coin with no asset behind it belongs to metatron-launch-visual.
+An index is an RWA: a vehicle holds the basket and each unit is an interest in that vehicle. One single asset belongs to metatron-rwa-visual; a coin with no asset behind it belongs to metatron-launch-visual. A basket of assets with a market price (tokenized stocks, xStocks, ETFs, tokenized gold or treasury funds, bitcoin) belongs to metatron-index-visual, which prices it live.
 
 ## Fast by design: the first card in four steps
 

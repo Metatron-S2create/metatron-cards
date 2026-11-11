@@ -1,8 +1,8 @@
 {
   "name": "metatron",
   "displayName": "Metatron",
-  "version": "1.1.0",
-  "description": "Metatron, the operating system for digital assets, inside Claude: launch and grow a token, tokenize a real asset or a basket of them as an index token, put a company's or a wallet's crypto to work, take payments, buy crypto and learn, each step as a live card. Routes every request to the right rail through the Metatron connector.",
+  "version": "1.2.0",
+  "description": "Metatron, the operating system for digital assets, inside Claude: launch and grow a token, tokenize a real asset, build a real index token over tokenized stocks, gold and crypto with live prices or over a basket of private assets, put a company's or a wallet's crypto to work, take payments, buy crypto and learn, each step as a live card. Routes every request to the right rail through the Metatron connector.",
   "author": {
     "name": "Metatron",
     "url": "https://launch.metatron.systems"
@@ -14,6 +14,8 @@
     "tokenization",
     "rwa",
     "index token",
+    "tokenized stocks",
+    "market index",
     "oracles",
     "token launch",
     "treasury",

@@ -1,6 +1,6 @@
 ---
 name: "metatron"
-description: "Use first for any Metatron request whose rail is not obvious, and for hello, what can Metatron do, show me everything, or a rail with no skill yet: AI trading bots or agents (Bybit, copy trading, backtests), white-label exchanges, wallets or card programs, benchmark indexes, ETFs and capital markets, wallet screening and fund tracing, smart contract security or a hack. Reads the request in English or Hebrew and opens exactly one Metatron skill: token launch, launchpad growth kit, RWA tokenization, index token, company treasury, listed company treasury, wallet earn and credit, payments, buy crypto, academy or feedback. Load it before replying, even if Metatron is not named."
+description: "Use first for any Metatron request whose rail is not obvious, and for hello, what can Metatron do, show me everything, or a rail with no skill yet: AI trading bots or agents (Bybit, copy trading, backtests), white-label exchanges, wallets or card programs, benchmark indexes, ETFs and capital markets, wallet screening and fund tracing, smart contract security or a hack. Reads the request in English or Hebrew and opens exactly one Metatron skill: token launch, launchpad growth kit, RWA tokenization, index token, market index, company treasury, listed company treasury, wallet earn and credit, payments, buy crypto, academy or feedback. Load it before replying, even if Metatron is not named."
 ---
 
 # Metatron, the front door
@@ -23,6 +23,7 @@ Never answer a rail request in prose without its skill: the skills carry the car
 | To promote a token that is already live: posts, captions or announcements for X, Telegram or Instagram, replies to comments, the growth team or agents, token DNA, a week of posts, a QR poster | metatron-launchpad-kit |
 | To tokenize a real asset for investors: real estate, metals, private credit, a fund, casks, equity, fractions of an asset; SPV, broker-dealer, Reg D or Reg S, accredited investors | metatron-rwa-visual |
 | One token for a basket of real assets: an index token or an index of casks, buildings, gold or loans, a basket token, NAV oracles, the oracle marketplace, an index's weights, cap or rebalancing | metatron-rwa-index-visual |
+| One token for a basket of market assets with live prices: an index or basket of tokenized stocks, xStocks, ETFs, the S&P 500, the Nasdaq or the magnificent 7, tokenized gold, treasury funds, bitcoin or ether, shares such as 60% SPY and 40% gold, moving each asset's weight, an index's live level or its feed for exchanges | metatron-index-visual |
 | A company's or startup's idle Bitcoin or dollars: where to keep them, earning on them, a policy, approvers, a forecast | metatron-treasury-private-visual |
 | The same for a listed company: board-ready plan, two approvals, auditor, shareholders, 10-K or 10-Q | metatron-treasury-public-visual |
 | Crypto in the person's own wallet: earn on USDC, USDT, ETH, BNB or BTC, borrow against it without selling, the wallet dashboard, alerts, rewards, idle USDC in MetaMask | metatron-treasury-wallet-visual |
@@ -37,17 +38,18 @@ Never answer a rail request in prose without its skill: the skills carry the car
 1. Learning wins only when the person asks to learn: a course, a lesson, teach me, or "what is X" with nothing to do. "Explain my options for tokenizing my building" is RWA.
 2. A company's money beats buying: "our company wants to buy bitcoin for the balance sheet" is company treasury.
 3. A real asset sold to investors beats a token launch: "tokenize our office building" is RWA; "tokenize our loyalty points" is a token launch.
-4. A basket beats one asset: "an index token of whisky casks", "one token for gold, casks and buildings" or "NAV oracles for my basket" is the index token skill, never a token launch; "tokenize whisky casks" (one holding, no basket) is RWA. A benchmark index for licensing, an ETF or an IPO is the capital markets desk.
-5. Taking money beats buying crypto: "accept USDC from customers" and "let my students pay in crypto" are payments.
-6. A live token: posting or telling people is the growth kit; anything on chain (status, holders, airdrop, vesting, the DEX) is the token launch skill.
-7. Whose money: "my wallet", "my MetaMask", "I hold" is the wallet skill; "our company", "our treasury", "the board", "our CFO" is company treasury.
-8. Listed or private: listed, publicly traded, Nasdaq, NYSE, shareholders, 10-K, audit committee is the listed skill; startup, private company, family office is private. Unsure: private, with listed as the second option.
+4. Which index: assets with a market price (tokenized stocks, xStocks, ETFs, tickers, the S&P 500, the Nasdaq, bitcoin, tokenized gold or treasury funds) are the market index skill, metatron-index-visual; assets a valuer or a NAV oracle has to value (casks, buildings, loans, bars in a vault) are metatron-rwa-index-visual. "An index of the magnificent 7" and "60% SPY, 25% gold, 15% bitcoin as one token" are the market index; "an index token of whisky casks" is the index token skill. Unsure: ask one question with both as the options.
+5. A basket beats one asset: "an index token of whisky casks", "one token for gold, casks and buildings" or "NAV oracles for my basket" is the index token skill, never a token launch; "tokenize whisky casks" (one holding, no basket) is RWA. A benchmark index for licensing, an ETF or an IPO is the capital markets desk.
+6. Taking money beats buying crypto: "accept USDC from customers" and "let my students pay in crypto" are payments.
+7. A live token: posting or telling people is the growth kit; anything on chain (status, holders, airdrop, vesting, the DEX) is the token launch skill.
+8. Whose money: "my wallet", "my MetaMask", "I hold" is the wallet skill; "our company", "our treasury", "the board", "our CFO" is company treasury.
+9. Listed or private: listed, publicly traded, Nasdaq, NYSE, shareholders, 10-K, audit committee is the listed skill; startup, private company, family office is private. Unsure: private, with listed as the second option.
 
-Hebrew follows the same table: "אני רוצה להנפיק טוקן" is a token launch, "טוקניזציה לבניין" is RWA, "טוקן אינדקס של חביות וויסקי" is the index token, "לחברה יש ביטקוין שיושב בצד" is company treasury, "ה-USDC שלי בארנק" is the wallet, "לינק לתשלום" is payments, "לקנות ביטקוין" is buy, "איזה קורס מתאים לי" is the Academy. Answer in Hebrew and pass `"lang":"he"` to every card. More cases, in both languages, are in `references/routing-examples.md`.
+Hebrew follows the same table: "אני רוצה להנפיק טוקן" is a token launch, "טוקניזציה לבניין" is RWA, "טוקן אינדקס של חביות וויסקי" is the index token, "טוקן אינדקס של מניות" or "אינדקס על xStocks" is the market index, "לחברה יש ביטקוין שיושב בצד" is company treasury, "ה-USDC שלי בארנק" is the wallet, "לינק לתשלום" is payments, "לקנות ביטקוין" is buy, "איזה קורס מתאים לי" is the Academy. Answer in Hebrew and pass `"lang":"he"` to every card. More cases, in both languages, are in `references/routing-examples.md`.
 
 ## Rails without a skill yet
 
-AI trading agents, white-label infrastructure, the capital markets desk (benchmark indexes for licensing, ETFs, IPOs), analysis and security have no skill yet. An index token over real assets is not the desk: it has its own skill. Say in two plain sentences what the rail is and its status from os_overview (Expert desk, In build or Planned), offer the plan with plan_my_intent, and name the closest rail that runs today when one fits. Never present them as executing.
+AI trading agents, white-label infrastructure, the capital markets desk (benchmark indexes for licensing, ETFs, IPOs), analysis and security have no skill yet. An index token over real assets or over tokenized stocks is not the desk: each has its own skill. Say in two plain sentences what the rail is and its status from os_overview (Expert desk, In build or Planned), offer the plan with plan_my_intent, and name the closest rail that runs today when one fits. Never present them as executing.
 
 ## os.home
 

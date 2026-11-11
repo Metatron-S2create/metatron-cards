@@ -1,6 +1,6 @@
 # Routing examples
 
-Real requests and the Metatron skill each one opens, in English and Hebrew. The same 298 cases test the server router behind plan_my_intent, so the assistant and the server agree. Read this file when a request does not clearly fit one row of the table in SKILL.md.
+Real requests and the Metatron skill each one opens, in English and Hebrew. The same cases test the server router behind plan_my_intent, so the assistant and the server agree. Read this file when a request does not clearly fit one row of the table in SKILL.md.
 
 ## metatron-launch-visual: Launch a new token or coin
 
@@ -142,6 +142,22 @@ In Hebrew:
 - אני רוצה טוקן שמייצג סל של נכסים
 
 Close calls: "Tokenize whisky casks" (one holding) is metatron-rwa-visual; "Teach me how index tokens work" is metatron-academy-visual; "Design a benchmark index for tokenized treasuries" is the capital markets desk (metatron).
+
+## metatron-index-visual: One token for a basket of market assets with live prices
+
+- I want to create a real index token over xStocks
+- Build an index of the magnificent 7 as one token
+- An index token: 60% SPY, 25% gold and 15% bitcoin
+- Create a basket of tokenized stocks for our fund's clients
+- A stock index token for European blue chips
+
+In Hebrew:
+
+- אני רוצה לייצר טוקן אינדקס של מניות
+- אינדקס על xstocks עם אפל, אנבידיה וטסלה
+- סל של מניות טכנולוגיה בטוקן אחד
+
+Close calls: "An index token of whisky casks" (assets a valuer has to value) is metatron-rwa-index-visual; "A benchmark index institutions can license" is the capital markets desk (metatron); "Buy Bitcoin with my card" is metatron-buy-visual.
 
 ## metatron-treasury-private-visual: Put a company's idle Bitcoin or dollars to work
 
